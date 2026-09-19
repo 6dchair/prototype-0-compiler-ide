@@ -691,7 +691,7 @@ p: "code away!"
                             setOutput([
                                 "Prototype-0 Syntax",
                                 "",
-                                "Use >>> to begin a program.",
+                                "Use >>> to begin a program and <<< to end",
                                 'int a = 6 -> declares an integer variable "a" and assigns it an int value of 6',
                                 'p: "text" prints text.',
                                 "",
@@ -700,7 +700,7 @@ p: "code away!"
                                 'int a = 6',
                                 'p: "Hello, World!\\n"',
                                 'p: a',
-                                ">>>",
+                                "<<<",
                                 "",
                                 "Output:",
                                 'Hello, World!',
