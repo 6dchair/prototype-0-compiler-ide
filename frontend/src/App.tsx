@@ -667,7 +667,7 @@ p: "code away!"
             <header className="ide-header">
 
                 <h1>
-                    &lt;prototype 0&gt; IDE by 6dchair
+                    &lt;prototype 0&gt;by 6dchair
                 </h1>
 
                 <div className="header-actions">
@@ -692,9 +692,12 @@ p: "code away!"
                                 "Prototype-0 Syntax",
                                 "",
                                 "Use >>> to begin a program and <<< to end",
+                                '',
                                 'int a = 6 -> declares an integer variable "a" and assigns it an int value of 6',
                                 'p: "text" prints text.',
+                                'and don\'t forget to use \"\n\" for next line',
                                 "",
+                                '',
                                 "Example:",
                                 ">>>",
                                 'int a = 6',
