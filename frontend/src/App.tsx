@@ -463,9 +463,10 @@ function App() {
     const [code, setCode] =
         useState(
             `>>>
-        p: "hi! welcome to prototype-0 IDE! pls refer to Syntax button to learn the syntax of prototype-0.\\n"
-        p: "delete this sample code and start ur own. code away!"
-        <<<`
+p: "hi! welcome to prototype-0 IDE! pls refer to Syntax button to learn the syntax of Prototype-0.\n"
+p: "delete this sample code and start ur own.\n"
+p: "code away!"
+<<<`
         );
 
     const [output, setOutput] =
@@ -696,13 +697,14 @@ function App() {
                                 "",
                                 "Example:",
                                 ">>>",
+                                'int a = 6',
                                 'p: "Hello, World!\\n"',
-                                'p: a, prints the int value of a.',
-                                "",
-                                "Example:",
+                                'p: a',
                                 ">>>",
-                                'p: "Hello, World!\\n"',
-                                "<<<"
+                                "",
+                                "Output:",
+                                'Hello, World!',
+                                '6',
                             ]);
                         }}
                     >
