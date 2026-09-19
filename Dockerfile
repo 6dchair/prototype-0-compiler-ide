@@ -11,13 +11,14 @@ WORKDIR /app
 
 COPY . .
 
+# Build the P0 compiler
 RUN make
 
+# Build the React frontend
 RUN npm --prefix frontend install
 RUN npm --prefix frontend run build
 
+# Install backend dependencies
 RUN npm --prefix web-backend install
-
-EXPOSE 3001
 
 CMD ["node", "web-backend/server.js"]

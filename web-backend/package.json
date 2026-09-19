@@ -1,14 +1,11 @@
 {
-  "name": "web-backend",
+  "name": "p0-web-backend",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "Web backend for the Prototype-0 IDE",
+  "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node server.js"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
   "dependencies": {
     "cors": "^2.8.6",
     "express": "^5.2.1"
