@@ -666,7 +666,7 @@ function App() {
             <header className="ide-header">
 
                 <h1>
-                    &lt;prototype 0&gt; IDE
+                    &lt;prototype 0&gt; IDE by 6dchair
                 </h1>
 
                 <div className="header-actions">
@@ -691,7 +691,13 @@ function App() {
                                 "Prototype-0 Syntax",
                                 "",
                                 "Use >>> to begin a program.",
+                                'int a = 6 -> declares an integer variable "a" and assigns it an int value of 6',
                                 'p: "text" prints text.',
+                                "",
+                                "Example:",
+                                ">>>",
+                                'p: "Hello, World!\\n"',
+                                'p: a, prints the int value of a.',
                                 "",
                                 "Example:",
                                 ">>>",
