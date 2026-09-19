@@ -74,7 +74,7 @@ body {
 .ide {
     position: relative;
 
-    width: 760px;
+    width: 1500px;
     height: 760px;
 
     min-width: 500px;
@@ -303,7 +303,7 @@ body {
    ========================= */
 
 .output-panel {
-    height: 170px;
+    /* height: 170px; */
 
     background:
         black;
@@ -316,8 +316,25 @@ body {
     flex-direction: column;
 
     flex-shrink: 0;
+    position: relative;
 }
 
+.output-resizer {
+    height: 7px;
+
+    width: 100%;
+
+    background: #777;
+
+    cursor: ns-resize;
+
+    flex-shrink: 0;
+}
+
+
+.output-resizer:hover {
+    background: #ffffff;
+}
 
 .output-title {
     padding:

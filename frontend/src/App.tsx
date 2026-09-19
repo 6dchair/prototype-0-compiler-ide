@@ -443,18 +443,22 @@
 // export default App;
 
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Editor from "@monaco-editor/react";
 // import { useState } from "react";
 // import Editor from "@monaco-editor/react";
+
 
 import "./App.css";
 
 
 function App() {
 
-    const [fontLoaded, setFontLoaded] =
-        useState(false);
+    // const [fontLoaded, setFontLoaded] =
+    //     useState(false);
+
+    const [outputHeight, setOutputHeight] =
+    useState(170);
 
     const [code, setCode] =
         useState(
@@ -469,31 +473,31 @@ function App() {
             "Welcome to <prototype 0> IDE"
         ]);
 
-    useEffect(
-        () => {
-            document.fonts
-                .load(
-                    '16px "TurboDOS"'
-                )
-                .then(
-                    () => {
-                        console.log(
-                            "TurboDOS font loaded!"
-                        );
+    // useEffect(
+    //     () => {
+    //         document.fonts
+    //             .load(
+    //                 '16px "TurboDOS"'
+    //             )
+    //             .then(
+    //                 () => {
+    //                     console.log(
+    //                         "TurboDOS font loaded!"
+    //                     );
 
-                        setFontLoaded(true);
-                    }
-                )
-                .catch(
-                    () => {
-                        console.error(
-                            "TurboDOS font failed to load."
-                        );
-                    }
-                );
-        },
-        []
-    );
+    //                     setFontLoaded(true);
+    //                 }
+    //             )
+    //             .catch(
+    //                 () => {
+    //                     console.error(
+    //                         "TurboDOS font failed to load."
+    //                     );
+    //                     setFontLoaded(true);
+    //             });
+    //     },
+    //     []
+    // );
 
     async function compileAndRun() {
         setOutput([
@@ -599,6 +603,62 @@ function App() {
         ]);
     }
 
+    function startOutputResize(
+        e: React.MouseEvent
+    ) {
+        e.preventDefault();
+
+        const startY =
+            e.clientY;
+
+        const startHeight =
+            outputHeight;
+
+
+        function handleMouseMove(
+            event: MouseEvent
+        ) {
+            const difference =
+                startY - event.clientY;
+
+            const newHeight =
+                startHeight + difference;
+
+            if (
+                newHeight >= 80 &&
+                newHeight <= 500
+            ) {
+                setOutputHeight(
+                    newHeight
+                );
+            }
+        }
+
+
+        function handleMouseUp() {
+            document.removeEventListener(
+                "mousemove",
+                handleMouseMove
+            );
+
+            document.removeEventListener(
+                "mouseup",
+                handleMouseUp
+            );
+        }
+
+
+        document.addEventListener(
+            "mousemove",
+            handleMouseMove
+        );
+
+        document.addEventListener(
+            "mouseup",
+            handleMouseUp
+        );
+    }
+
 
     return (
         <div className="ide">
@@ -654,87 +714,65 @@ function App() {
 
 
             <main className="editor-container">
-                {fontLoaded && ( 
-                    <Editor
-                        // height="100%"
-                        // defaultLanguage="plaintext"
-                        // value={code}
-                        // onChange={
-                        //     (value) =>
-                        //         setCode(
-                        //             value || ""
-                        //         )
-                        // }
-                        // theme="vs-dark"
-                        // options={{
-                        //     fontSize: 16,
 
-                        //     fontFamily:
-                        //         "'Courier New', monospace",
+                <Editor
+                    width="100%"
+                    height="100%"
+                    defaultLanguage="plaintext"
+                    value={code}
 
-                        //     lineNumbers: "on",
+                    onChange={
+                        (value) =>
+                            setCode(
+                                value || ""
+                            )
+                    }
 
-                        //     minimap: {
-                        //         enabled: false
-                        //     },
+                    theme="vs-dark"
 
-                        //     scrollBeyondLastLine: false,
+                    options={{
+                        fontSize: 16,
 
-                        //     automaticLayout: true,
+                        fontFamily:
+                            "TurboDOS",
 
-                        //     cursorBlinking: "blink",
+                        lineNumbers: "on",
 
-                        //     cursorStyle: "line",
+                        minimap: {
+                            enabled: false
+                        },
 
-                        //     padding: {
-                        //         top: 10
-                        //     }
-                        // }}
-                        width="100%"
-                        height="100%"
-                        defaultLanguage="plaintext"
-                        value={code}
-                        onChange={
-                            (value) =>
-                                setCode(
-                                    value || ""
-                                )
+                        scrollBeyondLastLine: false,
+
+                        automaticLayout: true,
+
+                        cursorBlinking: "blink",
+
+                        cursorStyle: "line",
+
+                        padding: {
+                            top: 10
                         }
-                        theme="vs-dark"
-                        options={{
-                            fontSize: 16,
-
-                            // fontFamily:
-                            //     "'Courier New', monospace",
-                            // fontFamily:
-                            //     "'TurboDOS', 'Courier New', monospace",
-                            fontFamily:
-                                "TurboDOS",
-                            lineNumbers: "on",
-
-                            minimap: {
-                                enabled: false
-                            },
-
-                            scrollBeyondLastLine: false,
-
-                            automaticLayout: true,
-
-                            cursorBlinking: "blink",
-
-                            cursorStyle: "line",
-
-                            padding: {
-                                top: 10
-                            }
-                        }}
-                    />
-                    )}
+                    }}
+                />
 
             </main>
 
 
-            <section className="output-panel">
+            {/* <section className="output-panel"> */}
+            <section
+                className="output-panel"
+                style={{
+                    height: `${outputHeight}px`
+                }}
+            >
+
+                 <div
+                    className="output-resizer"
+                    onMouseDown={
+                        startOutputResize
+                    }
+                />
 
                 <div className="output-title">
                     Messages / Output
