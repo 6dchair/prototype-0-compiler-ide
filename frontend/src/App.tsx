@@ -463,8 +463,8 @@ function App() {
     const [code, setCode] =
         useState(
             `>>>
-p: "hi! welcome to prototype-0 IDE! pls refer to Syntax button to learn the syntax of Prototype-0.\n"
-p: "delete this sample code and start ur own.\n"
+p: "hi! welcome to prototype-0 IDE! pls refer to Syntax button to learn the syntax of Prototype-0.\\n"
+p: "delete this sample code and start ur own.\\n"
 p: "code away!"
 <<<`
         );
