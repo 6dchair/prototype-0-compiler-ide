@@ -458,7 +458,7 @@ function App() {
     //     useState(false);
 
     const [outputHeight, setOutputHeight] =
-    useState(170);
+    useState(300);
 
     const [code, setCode] =
         useState(
